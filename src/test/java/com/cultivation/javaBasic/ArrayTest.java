@@ -4,6 +4,7 @@ import com.cultivation.javaBasic.showYourIntelligence.MyStack;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ArrayTest {
     @Test
@@ -22,5 +23,14 @@ class ArrayTest {
             new int[] {24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0},
             array
         );
+    }
+
+    @Test
+    void test() {
+        int x = 1;
+        int y = 1;
+
+       assertEquals(2, x++);
+       assertEquals(2, ++y);
     }
 }
