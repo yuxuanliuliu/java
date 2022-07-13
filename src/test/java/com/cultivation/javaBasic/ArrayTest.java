@@ -30,7 +30,7 @@ class ArrayTest {
         int x = 1;
         int y = 1;
 
-       assertEquals(2, x++);
+       assertEquals(1, x++);
        assertEquals(2, ++y);
     }
 }
