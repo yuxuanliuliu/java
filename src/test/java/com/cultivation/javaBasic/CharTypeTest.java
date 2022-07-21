@@ -1,37 +1,1 @@
-package com.cultivation.javaBasic;
-
-import com.cultivation.javaBasic.util.EscapedChars;
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-class CharTypeTest {
-    @Test
-    void should_describe_escaped_chars() {
-        // TODO: please modify the following code to pass the test
-        // <--start
-        final char backspace = ' ';
-        final char tab = ' ';
-        final char lineFeed = ' ';
-        final char carriageReturn = ' ';
-        final char doubleQuote = ' ';
-        final char singleQuote = ' ';
-        final char backslash = ' ';
-        // --end-->
-
-        assertEquals(EscapedChars.BACKSPACE.getValue(), backspace);
-        assertEquals(EscapedChars.TAB.getValue(), tab);
-        assertEquals(EscapedChars.LINE_FEED.getValue(), lineFeed);
-        assertEquals(EscapedChars.CARRIAGE_RETURN.getValue(), carriageReturn);
-        assertEquals(EscapedChars.DOUBLE_QUOTE.getValue(), doubleQuote);
-        assertEquals(EscapedChars.SINGLE_QUOTE.getValue(), singleQuote);
-        assertEquals(EscapedChars.BACKSLASH.getValue(), backslash);
-    }
-
-    /*
-     * - Could a char represent one unicode character? Or, in other words, could a char represent a code point?
-     * - How many bits are needed to represents one code point in UTF-16? What about UTF-8 and UTF-32?
-     * - In Java, which encoding is used by char type? The UTF-16 encoding or UTF-8 encoding.
-     * - Why there are many methods in Character class accepting an int parameter rather than char?
-     */
-}
+package com.cultivation.javaBasic;import com.cultivation.javaBasic.util.EscapedChars;import org.junit.jupiter.api.Test;import static org.junit.jupiter.api.Assertions.assertEquals;class CharTypeTest {    @Test    void should_describe_escaped_chars() {        // TODO: please modify the following code to pass the test        // <--start        final char backspace = '\u0008';        final char tab = '\u0009';        final char lineFeed = '\n';        final char carriageReturn = '\r';        final char doubleQuote = '\u0022';        final char singleQuote = 0x27;        final char backslash = 0x5C;        // --end-->        assertEquals(EscapedChars.BACKSPACE.getValue(), backspace);        assertEquals(EscapedChars.TAB.getValue(), tab);        assertEquals(EscapedChars.LINE_FEED.getValue(), lineFeed);        assertEquals(EscapedChars.CARRIAGE_RETURN.getValue(), carriageReturn);        assertEquals(EscapedChars.DOUBLE_QUOTE.getValue(), doubleQuote);        assertEquals(EscapedChars.SINGLE_QUOTE.getValue(), singleQuote);        assertEquals(EscapedChars.BACKSLASH.getValue(), backslash);    }}    /*     * - Could a char represent one unicode character? Or, in other words, could a char represent a code point?     * yes/no     * - How many bits are needed to represents one code point in UTF-16? What about UTF-8 and UTF-32?     * 16 bits     * - In Java, which encoding is used by char type? The UTF-16 encoding or UTF-8 encoding.     * utf16     * - Why there are many methods in Character class accepting an int parameter rather than char?     * The methods that only accept a char value cannot support supplementary characters. BMP     * The methods that accept an int value support all Unicode characters. All     *///    BMP: basic multilingual plane U+0000 - U+ffff// supplementary: U+10000 - U+10ffff
