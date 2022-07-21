@@ -29,6 +29,10 @@ class CollectionsTest {
         // TODO: you could ONLY use `Iterator.hasNext` and `Iterator.next` API to copy items to a `List`. No `for` is
         // allowed.
         // <--start
+        while (iterator.hasNext()) {
+            String element = iterator.next();
+            list.add(element);
+        }
 
         // --end-->
 
@@ -57,7 +61,7 @@ class CollectionsTest {
 
         // TODO: please modify the following code to pass the test
         // <--start
-        final List<String> expected = Arrays.asList("I", "Don't", "Know");
+        final List<String> expected = Arrays.asList("Amy", "Bob", "Carl");
         // --end-->
 
         assertIterableEquals(expected, staff);
@@ -89,7 +93,7 @@ class CollectionsTest {
 
         // TODO: please modify the following code to pass the test
         // <--start
-        final List<Integer> expected = Arrays.asList(0, 0, 0);
+        final List<Integer> expected = Arrays.asList(0, 1, 2, 10, 11);
         // --end-->
 
         assertIterableEquals(expected, integers);
@@ -97,10 +101,10 @@ class CollectionsTest {
 }
 
 /*
- * - Can you expect the order returned when iterating over a `HashSet<T>`?
+ * - Can you expect the order returned when iterating over a `HashSet<T>`? no
  * - What is an `ArrayList`, `LinkedList`, `ArrayDeque`, `HashSet`, `HashSet`, `TreeSet`, `EnumSet`, `LinkedHashSet`,
  *   `PriorityQueue`, `HashMap`, `TreeMap`, `EnumMap`, `LinkedHashMap`
- * - What if an collection is modified while an iterator is still iterating?
+ * - What if an collection is modified while an iterator is still iterating? concurrentmodified exception
  * - Can you add or remove items to the list that is returned by `Array.asList` or `Collections.nCopies`?
  * - What are the differences between HashMap and HashSet?
  * - What is size(), and what capacity?
