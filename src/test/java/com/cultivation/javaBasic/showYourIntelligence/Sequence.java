@@ -33,16 +33,15 @@ class SequenceIterator implements Iterator<Integer> {
 
   // TODO: You can add additional fields or methods if you want.
   // <--start
-  ArrayList<Integer> coll = new ArrayList<>();
   private int cursor;
+  private int end;
   // --end-->
 
   SequenceIterator(Integer start, Integer end) {
     // TODO: please implements the following code to pass the test
     // <--start
-    for (int i = start; i < end; i++) {
-      coll.add(i);
-    }
+    this.cursor = start;
+    this.end = end;
     // --end-->
   }
 
@@ -50,7 +49,7 @@ class SequenceIterator implements Iterator<Integer> {
   public boolean hasNext() {
     // TODO: please implements the following code to pass the test
     // <--start
-    return cursor < coll.size();
+    return cursor < end;
     // --end-->
   }
 
@@ -58,13 +57,7 @@ class SequenceIterator implements Iterator<Integer> {
   public Integer next() {
     // TODO: please implements the following code to pass the test
     // <--start
-    int i = cursor;
-    if (i >= coll.size()) {
-      throw new NoSuchElementException();
-    }
-
-    cursor = i + 1;
-    return coll.get(i);
+    return cursor++;
     // --end-->
   }
 }

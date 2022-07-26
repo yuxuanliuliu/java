@@ -4,7 +4,6 @@ import com.cultivation.javaBasic.showYourIntelligence.DistinctIterable;
 import com.cultivation.javaBasic.showYourIntelligence.Sequence;
 import com.cultivation.javaBasic.util.RandomCharacterIterable;
 import org.junit.jupiter.api.Test;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.*;
 
@@ -12,18 +11,31 @@ import static com.cultivation.javaBasicExtended.myUnitTestFramework.MyAssert.ass
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
 class CollectionsTest {
-    @Test
-    void should_go_through_an_iterator() {
-        ArrayList<String> collection = new ArrayList<>();
-        collection.add("Hello");
-        collection.add("World");
-        collection.add("!");
-        Iterator<String> iterator = collection.iterator();
 
-      HashSet<String> strings = new HashSet<>(collection);
+  @Test
+  void should_go_through_an_iterator() {
+    ArrayList<String> collection = new ArrayList<>();
+    collection.add("Hello");
+    collection.add("World");
+    collection.add("!");
 
-      assertEquals(strings, createList(iterator));
-    }
+    LinkedList<String> collection2 = new LinkedList<>();
+    collection2.add("Hello");
+    collection2.add("World");
+    collection2.add("!");
+
+    HashSet<String> collectionSet = new HashSet<>(collection);
+    HashSet<String> collectionSet2 = new HashSet<>(collection2);
+
+    assertEquals(collection, collection2);
+    assertEquals(collectionSet, collectionSet2);
+    assertIterableEquals(collectionSet, collectionSet2);
+//    assertIterableEquals(collection, collection2);
+
+    Iterator<String> iterator = collection.iterator();
+
+//    assertIterableEquals(collection, createList(iterator));
+  }
 
   @SuppressWarnings({"unused", "UnnecessaryLocalVariable"})
   private static List<String> createList(Iterator<String> iterator) {
