@@ -1,7 +1,5 @@
 package com.cultivation.javaBasic.showYourIntelligence;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.util.*;
 
 public class DistinctIterable<T> implements Iterable<T> {
@@ -35,7 +33,7 @@ class DistinctIterator<E> implements Iterator<E> {
 
   private E item;
 
-  private boolean hasAdded;
+  private boolean hasAddedNext;
 
   DistinctIterator(Iterator<E> iterator) {
     this.iterator = iterator;
@@ -43,28 +41,29 @@ class DistinctIterator<E> implements Iterator<E> {
 
   @Override
   public boolean hasNext() {
-    if (hasAdded) {return true;}
+//    if (hasAddedNext) {return true;}
+    boolean setNext;
 
    while (iterator.hasNext()) {
      E next = iterator.next();
 
      if (items.add(next)) {
        item = next;
-       hasAdded = true;
-       return true;
+//       hasAddedNext = true;
+       setNext = true;
+       return setNext;
      }
    }
-
    return false;
   }
 
-//    Random
+
 
   @Override
   public E next() {
-    hasAdded = false;
-//    iterator = items.iterator();
-    return item;
+    Iterator<E> iterator1 = items.iterator();
+//    hasAddedNext = false;
+    return iterator1.next();
   }
   // --end->
 }

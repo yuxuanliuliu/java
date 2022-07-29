@@ -41,7 +41,7 @@ class SequenceIterator implements Iterator<Integer> {
     // TODO: please implements the following code to pass the test
     // <--start
     this.cursor = start;
-    this.end = end;
+    this.end = end + 1;
     // --end-->
   }
 

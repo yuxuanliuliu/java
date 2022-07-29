@@ -3,6 +3,7 @@ package com.cultivation.javaBasic;
 import com.cultivation.javaBasic.showYourIntelligence.DistinctIterable;
 import com.cultivation.javaBasic.showYourIntelligence.Sequence;
 import com.cultivation.javaBasic.util.RandomCharacterIterable;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -24,13 +25,14 @@ class CollectionsTest {
     collection2.add("World");
     collection2.add("!");
 
-    HashSet<String> collectionSet = new HashSet<>(collection);
-    HashSet<String> collectionSet2 = new HashSet<>(collection2);
+//    HashSet<String> collectionSet = new HashSet<>(collection);
+//    HashSet<String> collectionSet2 = new HashSet<>(collection2);
 
     assertEquals(collection, collection2);
-    assertEquals(collectionSet, collectionSet2);
-    assertIterableEquals(collectionSet, collectionSet2);
-//    assertIterableEquals(collection, collection2);
+    assertIterableEquals(collection, collection2);
+//    assertEquals(collectionSet, collectionSet2);
+//    assertIterableEquals(collectionSet, collectionSet2);
+//  assertIterableEquals(collection, collection2);
 
     Iterator<String> iterator = collection.iterator();
 
@@ -55,7 +57,15 @@ class CollectionsTest {
   @Test
   void should_create_a_sequence_without_putting_all_items_into_memory() {
     Sequence sequence = new Sequence(4, 10);
-    assertIterableEquals(Arrays.asList(4, 5, 6, 7, 8, 9), sequence);
+
+    ArrayList<Object> sequenceArray = new ArrayList<>();
+    for (int a : sequence ) {
+      sequenceArray.add(a);
+    }
+
+    assertIterableEquals(Arrays.asList(4, 5, 6, 7, 8, 9, 10), sequence);
+    Assertions.assertEquals(Arrays.asList(4, 5, 6, 7, 8, 9, 10), sequenceArray);
+    //
   }
 
   @Test
@@ -66,9 +76,15 @@ class CollectionsTest {
     staff.add("Bob");
     staff.add("Carl");
 
+//    staff.add(1, "juliet");
+//    staff.remove(1);
+
+    System.out.println(staff);
+
     ListIterator<String> iterator = staff.listIterator();
     iterator.next();
     iterator.add("Juliet");
+    staff.add("mary");
     iterator.previous();
     iterator.remove();
 
@@ -84,16 +100,29 @@ class CollectionsTest {
   void should_generate_distinct_sequence_on_the_fly() {
     // NOTE: This test may execute for a while. But it is okay if your impl is correct.
     final int oneGagaChars = 1024 * 1024 * 1024;
+    //1073741824
+    //2147483647
     RandomCharacterIterable characters = new RandomCharacterIterable(
         oneGagaChars,
         new Character[]{'a', 'b'});
 
+//    int maxValue = Integer.MAX_VALUE;
+//    System.out.println(maxValue);
+//
+//
+//    ArrayList<Object> noArgConstructor = new ArrayList<>();
+//    noArgConstructor.add(1);
+//    ArrayList<Object> argConstructor = new ArrayList<>(oneGagaChars);
+//    argConstructor.add("1");
+//
+//    assertIterableEquals(Arrays.asList(1), argConstructor);
+//    //异常
+//
     List<Character> distinct = new DistinctIterable<>(characters).toList();
     distinct.sort(Character::compareTo);
 
     assertIterableEquals(Arrays.asList('a', 'b'), distinct);
   }
-
   @Test
   void should_reflects_back_to_original_list_for_sub_range() {
     List<Integer> integers = new ArrayList<>();
