@@ -1,11 +1,6 @@
 package com.cultivation.javaBasicExtended.wordProcessor;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 class TextProcessor {
     private final TextProcessorSettings settings;
@@ -31,7 +26,7 @@ class TextProcessor {
     String process(String text) {
         // TODO: Please implement the method to pass all the test
         // <--start
-        throw new NotImplementedException();
+        return "";
         // --end-->
     }
 }

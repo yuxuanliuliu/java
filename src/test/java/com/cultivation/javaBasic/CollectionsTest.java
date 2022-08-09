@@ -103,7 +103,7 @@ class CollectionsTest {
     //1073741824
     //2147483647
     RandomCharacterIterable characters = new RandomCharacterIterable(
-        oneGagaChars,
+        5,
         new Character[]{'a', 'b'});
 
 //    int maxValue = Integer.MAX_VALUE;
@@ -131,16 +131,52 @@ class CollectionsTest {
     }
 
     List<Integer> subList = integers.subList(3, 10);
+
+
     subList.clear();
 
     // TODO: please modify the following code to pass the test
     // <--start
     final List<Integer> expected = Arrays.asList(0, 1, 2, 10, 11);
     // --end-->
+    assertIterableEquals(expected, integers);
+  }
+
+
+  @Test
+  void should_reflects_back_to_original_list_for_sub_range_1() {
+    List<Integer> integers = new ArrayList<>();
+    for (int i = 0; i < 12; ++i) {
+      integers.add(i);
+    }
+
+    List<Integer> subList = integers.subList(3, 10);
+    subList.clear();
+
+    // TODO: please modify the following code to pass the test
+    // <--start
+    Iterator<Integer> iterator = integers.iterator();
+
+    final List<Integer> expected = Arrays.asList(0, 0, 0);
+    int[] a = {1, 2, 3};
+    List<int[]> ints = Arrays.asList(a);
+    expected.set(0, 1);
+    System.out.println(expected);
+    List<String> strings = Collections.nCopies(2, "1");
+
+    // --end-->
 
     assertIterableEquals(expected, integers);
   }
+
+  @Test
+  void name() {
+    ArrayList<Object> objects2 = new ArrayList<>();
+    List<Object> objects = Arrays.asList(null);
+  }
 }
+
+
 
 /*
  * - Can you expect the order returned when iterating over a `HashSet<T>`? no
@@ -148,6 +184,10 @@ class CollectionsTest {
  *   `PriorityQueue`, `HashMap`, `TreeMap`, `EnumMap`, `LinkedHashMap`
  * - What if an collection is modified while an iterator is still iterating? conCurrentmodified exception
  * - Can you add or remove items to the list that is returned by `Array.asList` or `Collections.nCopies`?
+ * nCopies is immutable
+ * Arrya.asList changes the original list
  * - What are the differences between HashMap and HashSet?
+ * hashset is implemented by hashmap
  * - What is size(), and what capacity?
+ * size is number of element in collection, capacity can be initialized when declare first or grow as adding.
  */
