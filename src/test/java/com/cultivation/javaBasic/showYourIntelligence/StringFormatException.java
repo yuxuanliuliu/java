@@ -18,4 +18,8 @@ public class StringFormatException extends Exception {
         super(message, cause);
         // --end-->
     }
+
+    public StringFormatException (String message, Throwable cause, String test) {
+        super(message, cause, true, false);
+    }
 }
