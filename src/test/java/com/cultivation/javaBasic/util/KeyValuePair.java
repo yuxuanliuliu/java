@@ -1,5 +1,8 @@
 package com.cultivation.javaBasic.util;
 
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+
 public class KeyValuePair<TKey, TValue> {
     private TKey key;
     private TValue value;
@@ -15,5 +18,9 @@ public class KeyValuePair<TKey, TValue> {
 
     public TValue getValue() {
         return value;
+    }
+
+    public Type[] getGenericTypes() {
+        return ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments();
     }
 }
